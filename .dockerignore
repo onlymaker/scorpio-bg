@@ -1,0 +1,7 @@
+/.git
+/.idea
+/runtime
+/.gitignore
+/composer.lock
+/Dockerfile
+/cfg/local.ini
