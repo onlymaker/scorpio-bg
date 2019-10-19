@@ -1,6 +1,6 @@
 {
     "name": "onlymaker/scorpio-bg",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "authors": [
         {
             "name": "jibo",
@@ -11,6 +11,7 @@
     "require": {
         "ext-json": "^1.5",
         "bcosca/fatfree": "dev-3.6.5-syncxplus",
+        "nategood/httpful": "*",
         "php-amqplib/php-amqplib": "^2.8",
         "phpoffice/phpspreadsheet": "^1.5"
     },

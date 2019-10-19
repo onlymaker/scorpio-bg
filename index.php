@@ -2,6 +2,7 @@
 
 use app\Rabbit;
 use PhpAmqpLib\Message\AMQPMessage;
+use service\Fulfill;
 use service\Wholesale;
 
 define('ROOT', __DIR__);
@@ -50,6 +51,9 @@ Rabbit::consume(function (AMQPMessage $message) {
         switch ($data['task']) {
             case 'wholesale':
                 Wholesale::instance()->saveAndNotify($data['email'] ?? '');
+                break;
+            case 'fulfill':
+                Fulfill::instance()->process($data['data']);
                 break;
         }
     }
