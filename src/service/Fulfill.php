@@ -43,8 +43,8 @@ class Fulfill extends \Prefab
                 $line .=  ': Processed ' . $this->setup(
                     $shopifyOrder['order_id'],
                     $shopifyOrder['line_item_id'],
-                    $data['carrier'],
-                    $data['trackingNumber'],
+                    $item['carrier'],
+                    $item['trackingNumber'],
                     ) . '<br/>';
             } else {
                 $line .= ': Nothing to do<br/>';
@@ -93,13 +93,15 @@ class Fulfill extends \Prefab
             }
             $api = \Base::instance()->get('SHOPIFY_ANALYTICS') . "/admin/api/2019-07/orders/$orderId/fulfillments.json";
             writeLog($api);
+            usleep(500000);
             $response = Request::post($api)
                 ->sendsType(Mime::JSON)
-                ->body(json_encode($params))
+                ->body(json_encode($params, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE))
                 ->send();
             return  $response->code;
         } catch (\Throwable $t) {
             return $t->getTraceAsString();
         }
+        return 'unexpected end';
     }
 }
