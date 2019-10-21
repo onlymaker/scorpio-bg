@@ -88,6 +88,8 @@ class Fulfill extends \Prefab
                 case self::YUN_EXPRESS:
                     $params['fulfillment']['tracking_company'] = $trackingCompany;
                     break;
+                default:
+                    $params['fulfillment']['tracking_url'] = 'https://www.17track.net/en';
             }
             $api = \Base::instance()->get('SHOPIFY_ANALYTICS') . "/admin/api/2019-07/orders/$orderId/fulfillments.json";
             writeLog($api);
