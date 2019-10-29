@@ -37,17 +37,17 @@ class Fulfill extends \Prefab
             $filter = ['order_name=? and sku=? and size=? and fulfillment_status=?', $name, $item['sku'], $item['size'], ''];
             $count = $shopifyOrder->count($filter);
             if ($count > 1) {
-                $line .=  ': Please fulfill it manually<br/>';
+                $line .=  ': <div style="color:red">Please fulfill it manually</div>';
             } else if ($count == 1) {
                 $shopifyOrder->load($filter);
-                $line .=  ': Processed ' . $this->setup(
+                $line .=  ': <div style="color:green">Processed ' . $this->setup(
                     $shopifyOrder['order_id'],
                     $shopifyOrder['line_item_id'],
                     $item['carrier'],
                     $item['trackingNumber'],
-                    ) . '<br/>';
+                    ) . '</div>';
             } else {
-                $line .= ': Nothing to do<br/>';
+                $line .= ': <div style="color:blue">Nothing to do</div>';
             }
             $smtp = new \SMTP(
                 'hwsmtp.exmail.qq.com',
