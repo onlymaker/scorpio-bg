@@ -1,4 +1,4 @@
-FROM syncxplus/php:7.3.9-cli-stretch
+FROM syncxplus/php:7.3.11-cli-stretch
 
 WORKDIR /data/
 

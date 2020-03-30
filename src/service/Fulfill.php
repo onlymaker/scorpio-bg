@@ -12,11 +12,10 @@ class Fulfill extends \Prefab
     const CHINA_POST = 'China Post';
     const YUN_EXPRESS = 'YunExpress';
     const CARRIER = [
-        'EMS' => self::CHINA_POST,
-        'E特快' => self::CHINA_POST,
-        'U包' => self::CHINA_POST,
-        '中外运' => self::YUN_EXPRESS,
-        '云途' => self::YUN_EXPRESS,
+        '中外运(A)' => self::YUN_EXPRESS,
+        '云途(B)' => self::YUN_EXPRESS,
+        'U包(C)' => self::CHINA_POST,
+        'E特快(G)' => self::CHINA_POST,
     ];
 
     function process($data)
