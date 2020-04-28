@@ -80,7 +80,7 @@ class Fulfill extends \Prefab
                     ],
                 ]
             ];
-            switch ($trackingCompany) {
+            /*switch ($trackingCompany) {
                 case self::CHINA_POST:
                     $params['fulfillment']['tracking_url'] = 'http://www.ems.com.cn/english.html';
                     break;
@@ -89,7 +89,8 @@ class Fulfill extends \Prefab
                     break;
                 default:
                     $params['fulfillment']['tracking_url'] = 'https://www.17track.net/en';
-            }
+            }*/
+            $params['fulfillment']['tracking_url'] = 'https://www.17track.net/en';
             $api = \Base::instance()->get('SHOPIFY_ANALYTICS') . "/admin/api/2019-07/orders/$orderId/fulfillments.json";
             writeLog($api);
             usleep(500000);
