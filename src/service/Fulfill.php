@@ -58,8 +58,7 @@ class Fulfill extends \Prefab
             $content .= $line;
         }
         $smtp->set('From', 'service@onlymaker.com');
-        $smtp->set('To', '<pino@onlymaker.com>');
-        $smtp->set('Bcc', '<jibo@onlymaker.com>,<steven@onlymaker.com>');
+        $smtp->set('To', '<steven@onlymaker.com,pino@onlymaker.com,luvian@onlymaker.com>');
         $smtp->set('Content-Type', 'text/html; charset=UTF-8');
         $smtp->set('Subject', 'Fulfill Notification');
         writeLog('Send out result: ' . $smtp->send($content));
