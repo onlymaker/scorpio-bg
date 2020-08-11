@@ -55,6 +55,19 @@ Rabbit::consume(function (AMQPMessage $message) {
             case 'fulfill':
                 Fulfill::instance()->process($data['data']);
                 break;
+            case 'testConnection':
+                $smtp = new \SMTP(
+                    'hwsmtp.exmail.qq.com',
+                    465,
+                    'ssl',
+                    'service@onlymaker.com',
+                    \Base::instance()->get('EMAIL.SECRET')
+                );
+                $smtp->set('From', 'service@onlymaker.com');
+                $smtp->set('To', '<jibo@onlymaker.com>');
+                $smtp->set('Subject', 'Rabbit mq oversea');
+                writeLog('Send out result: ' . $smtp->send('Connection is OK.'));
+                break;
         }
     }
     $deliveryInfo['channel']->basic_ack($deliveryTag);
